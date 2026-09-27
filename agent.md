@@ -3,7 +3,7 @@
 This file provides guidance to agents when working with code in this repository.
 
 ## Project: BinaryBob — IBM Bob Hackathon Demo
-Spring Boot 4.0.8 + Java 21 + Lombok + Maven. No database — data lives in an in-memory `HashMap` initialised in the `UserService` constructor (not `@PostConstruct`).
+Spring Boot 4.0.8 + Java 21 + Lombok + Maven. No database — data lives in an in-memory `HashMap`.
 
 ## Commands
 ```bash
