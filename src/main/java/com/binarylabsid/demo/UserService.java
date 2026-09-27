@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Slf4j
@@ -20,6 +21,11 @@ public class UserService {
     }
 
     public String getUserDisplayName(Integer userId) {
-        return mockDb.get(userId).getName().toUpperCase();
+        return Optional.ofNullable(mockDb.get(userId))
+                .map(user -> user.getName().toUpperCase())
+                .orElseThrow(() -> {
+                    log.warn("[SECURITY-AUDIT] getUserDisplayName called with unknown userId={}", userId);
+                    return new NoSuchElementException("User not found for id: " + userId);
+                });
     }
 }
