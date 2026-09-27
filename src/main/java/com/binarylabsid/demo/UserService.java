@@ -13,7 +13,9 @@ public class UserService {
     private final Map<Integer, User> mockDb = new HashMap<>();
 
     public UserService() {
-        mockDb.put(1, new User(1, "Try"));
+        mockDb.put(1, new User(1, "Binarylabs ID"));
+        mockDb.put(2, new User(2, "Try Abdi Putra"));
+        mockDb.put(3, new User(3, "Sonia Rahmawati"));
     }
 
     public String getUserDisplayName(Integer userId) {
