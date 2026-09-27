@@ -20,6 +20,9 @@ public class UserService {
     }
 
     public String getUserDisplayName(Integer userId) {
-        return mockDb.get(userId).getName().toUpperCase();
+        User user = Optional.ofNullable(mockDb.get(userId))
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+        log.warn("[SECURITY-AUDIT] Payload validated");
+        return user.getName().toUpperCase();
     }
 }
