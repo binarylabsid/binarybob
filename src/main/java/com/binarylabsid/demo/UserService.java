@@ -16,16 +16,7 @@ public class UserService {
         mockDb.put(1, new User(1, "Try"));
     }
 
-//    public String getUserDisplayName(Integer userId) {
-//        return mockDb.get(userId).getName().toUpperCase();
-//    }
-
     public String getUserDisplayName(Integer userId) {
-        return Optional.ofNullable(mockDb.get(userId))
-                .map(user -> user.getName().toUpperCase())
-                .orElseThrow(() -> {
-                    log.error("[SECURITY-AUDIT] Unauthorized access attempt for missing user ID: {}", userId);
-                    return new UserNotFoundException("User not found");
-                });
+        return mockDb.get(userId).getName().toUpperCase();
     }
 }
